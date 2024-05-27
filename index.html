@@ -56,10 +56,30 @@
                 Aproveite o potencial do e-mail marketing para ganhar vendas e
                 fortalecer seu relacionamento com clientes.
               </p>
-              <form class="form-email">
+              <form class="form-email" autocomplete="off" novalidate>
                 <input type="email" placeholder="Digite seu e-mail" />
                 <button class="btn-primary" type="submit">Testar gratis</button>
               </form>
+              <style>
+                .form-email.invalid {
+                  border: 1px solid red;
+                }
+              </style>
+              <script>
+                document
+                  .querySelector(".form-email")
+                  .addEventListener("submit", function (event) {
+                    const emailInput = event.target.querySelector(
+                      'input[type="email"]'
+                    );
+                    if (!emailInput.value || !emailInput.checkValidity()) {
+                      event.target.classList.add("invalid");
+                      event.preventDefault();
+                    } else {
+                      event.target.classList.remove("invalid");
+                    }
+                  });
+              </script>
               <ul>
                 <li>
                   <img
